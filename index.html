@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090909">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="DAY.">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="style.css">
+<title>DAY. — La tua agenda</title>
+</head>
+<body>
+<header class="top">
+  <div class="brand">DAY<span>.</span></div>
+  <button id="todayBtn" class="quiet">OGGI</button>
+</header>
+<main>
+  <section class="welcome">
+    <div class="eyebrow" id="weekday"></div>
+    <h1 id="dateTitle"></h1>
+    <p id="countLine">Organizza la tua giornata.</p>
+  </section>
+  <section class="toolbar">
+    <div class="switcher">
+      <button class="view active" data-view="day">Giorno</button>
+      <button class="view" data-view="week">Settimana</button>
+      <button class="view" data-view="month">Mese</button>
+    </div>
+    <div class="arrows">
+      <button id="prev" aria-label="Precedente">‹</button>
+      <button id="next" aria-label="Successivo">›</button>
+    </div>
+  </section>
+  <section id="calendar" class="calendar"></section>
+  <section class="agenda-head">
+    <h2 id="agendaTitle">I tuoi impegni</h2>
+    <span id="eventCount"></span>
+  </section>
+  <section id="events" class="events"></section>
+  <section class="bottom-space"></section>
+</main>
+<nav class="bottom-nav">
+  <button class="nav-item selected" data-tab="agenda"><span>▦</span>Agenda</button>
+  <button class="add-main" id="addBtn" aria-label="Aggiungi impegno">+</button>
+  <button class="nav-item" data-tab="stats"><span>◷</span>Statistiche</button>
+  <button class="nav-item" data-tab="settings"><span>⚙</span>Impostazioni</button>
+</nav>
+<div id="modal" class="modal hidden">
+ <form id="eventForm" class="sheet">
+  <div class="sheet-top"><span>NUOVO IMPEGNO</span><button type="button" id="closeModal">✕</button></div>
+  <label>Titolo<input id="title" required maxlength="70" placeholder="Es. Allenamento gambe"></label>
+  <div class="two">
+   <label>Data<input id="date" type="date" required></label>
+   <label>Ora<input id="time" type="time" value="09:00"></label>
+  </div>
+  <label>Categoria<select id="category"><option>Palestra</option><option>Lavoro</option><option>Compleanno</option><option>Cena</option><option>Personale</option><option>Altro</option></select></label>
+  <label>Ripeti<select id="repeat"><option value="none">Mai</option><option value="daily">Ogni giorno</option><option value="weekly">Ogni settimana</option><option value="monthly">Ogni mese</option><option value="yearly">Ogni anno</option></select></label>
+  <label class="check"><input id="reminder" type="checkbox"> Ricordami all'orario dell'impegno</label>
+  <label>Note<textarea id="notes" rows="2" placeholder="Dettagli (facoltativi)"></textarea></label>
+  <button class="primary" type="submit">Salva impegno</button>
+ </form>
+</div>
+<div id="panel" class="modal hidden"><div class="sheet"><div class="sheet-top"><span id="panelTitle">DAY.</span><button id="closePanel">✕</button></div><div id="panelContent"></div></div></div>
+<script src="app.js"></script>
+</body></html>
